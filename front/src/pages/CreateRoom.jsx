@@ -17,7 +17,7 @@ export default function CreateRoom() {
         }
 
         try {
-            await axios.post('/room', {
+            await axios.post('/api/room', {
                 title,
                 max,
                 password: password || undefined, // 빈 문자열이면 undefined로
