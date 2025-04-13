@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
 const { MONGO_ID, MONGO_PASSWORD, NODE_ENV } = process.env;
+// console.log('비밀번호:', MONGO_PASSWORD);
+
 // const MONGO_URL = `mongodb://${MONGO_ID}:${MONGO_PASSWORD}@ cluster0-shard-00-00.n7xpd.mongodb.net:27017`;
-const MONGO_URL = "mongodb+srv://parkmyounghoi:${MONGO_PASSWORD}@cluster0.n7xpd.mongodb.net/";
+const MONGO_URL = `mongodb://parkmyounghoi:${MONGO_PASSWORD}@cluster0-shard-00-00.n7xpd.mongodb.net:27017,cluster0-shard-00-01.n7xpd.mongodb.net:27017,cluster0-shard-00-02.n7xpd.mongodb.net:27017/?replicaSet=atlas-ck2amp-shard-0&ssl=true&authSource=admin`
 
 console.log(MONGO_URL);
 

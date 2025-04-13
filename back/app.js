@@ -6,6 +6,7 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const ColorHash = require('color-hash').default;
 const nunjucks = require('nunjucks');
+const cors = require('cors');
 
 dotenv.config();
 const webSocket = require('./socket');
@@ -13,12 +14,19 @@ const indexRouter = require('./routes');
 const connect = require('./schemas');
 
 const app = express();
+
 app.set('port', process.env.PORT || 8005);
 app.set('view engine', 'html');
 nunjucks.configure('views', {
     express: app,
     watch: true,
 });
+app.use(cors({
+    origin: 'http://localhost:3000',  // 프론트엔드 주소 정확히 기입
+    credentials: true
+}));
+
+
 connect();
 
 const sessionMiddleware = session({
