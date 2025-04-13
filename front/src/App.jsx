@@ -1,16 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import RoomList from './pages/RoomList';
+import CreateRoom from './pages/CreateRoom.jsx';
+import ChatRoom from './pages/ChatRoom';
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <BrowserRouter>
+            <nav className="bg-gray-100 p-4 flex gap-4">
+                <Link to="/" className="text-blue-600">방 목록</Link>
+                <Link to="/create" className="text-blue-600">방 만들기</Link>
+            </nav>
 
-  return (
-    <>
-      <h1 className={`text-5xl underline text-gray-600`}>Hello World</h1>
-    </>
-  )
+            <Routes>
+                <Route path="/" element={<RoomList />} />
+                <Route path="/create" element={<CreateRoom />} />
+                <Route path="/room/:roomId" element={<ChatRoom />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;

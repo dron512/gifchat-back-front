@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const ColorHash = require('color-hash').default;
+const nunjucks = require('nunjucks');
 
 dotenv.config();
 const webSocket = require('./socket');
